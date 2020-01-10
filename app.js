@@ -12,11 +12,26 @@ function findMatches(wordToMatch, cities){
 
         const regex = new RegExp(wordToMatch, 'gi');
         return place.city.match(regex) || place.state.match(regex)
+
     });
 }
 
 function displayMatches(){
-    console.log(this.value);
+    const matchArray = findMatches(this.value,cities);
+    const html = matchArray.map(place => {
+        return `
+        
+            <li>
+                <span class="name">${place.city}, ${place.state}</span>
+                <span class="population">${place.population}</span>
+            </li>
+        `;
+    })
 }
 
-//stopped at 8:00
+const searchInput = document.querySelector('.search');
+const suggestions = document.querySelector('.suggestions');
+
+
+searchInput.addEventListener('change', displayMatches);
+searchInput.addEventListener('keyup', displayMatches);
