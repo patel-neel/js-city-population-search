@@ -43,3 +43,9 @@ const suggestions = document.querySelector('.suggestions');
 
 searchInput.addEventListener('change', displayMatches);
 searchInput.addEventListener('keyup', displayMatches);
+
+
+function displayMatches(){
+    const matchArray = findMatches(this.value,cities);
+    const regex = new RegExp()
+}
